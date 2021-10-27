@@ -9,7 +9,7 @@ class Knight < Piece
 
     def initialize(color)
         super(color)
-        @symbol = :Kn
+        @symbol = :H
     end
 
     def valid_spaces(current_board, position)

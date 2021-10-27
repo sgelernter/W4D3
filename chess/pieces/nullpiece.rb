@@ -6,8 +6,8 @@ class NullPiece < Piece
     include Singleton 
 
     def initialize
-        super(:empty)
-        @symbol = :_
+        super(:default)
+        @symbol = " "
     end
 
     

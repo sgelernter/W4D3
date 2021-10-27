@@ -61,8 +61,8 @@ class Board
     end
 end
 
-b = Board.new
-b.render
+# b = Board.new
+# b.render
 # puts
 # b.move_piece([1,2], [2,3])
 # b.render
