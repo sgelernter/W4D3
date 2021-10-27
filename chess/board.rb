@@ -12,16 +12,23 @@ class Board
 
     attr_reader :grid
 
+    START_PLACES = {Rook => [[0,0], [0,7], [7,0], [7,7]],
+                    Knight=> [[0,1], [0,6], [7,1], [7,6]],
+                    Bishop=> [[0,2], [0,5], [7,2], [7,5]],
+                    Queen=> [[0,3], [7,3]],
+                    King=> [[0,4], [7,4]]
+                }
+
     def initialize 
         @grid = Array.new(8) {Array.new(8, NullPiece.instance)}
         (0..7).each do |col| #black at top, white at bottom
             @grid[1][col] = Pawn.new(:black)
             @grid[6][col] = Pawn.new(:white)
-            # (0..7).each do |col|
-                # if row < 2 || row > 5
-                    #what's the position ==> ask pieces if any of them start there, if so initialize that piece there
-                    # @grid[row][col] = Pawn.new(:black)
-                end
+        end
+        START_PLACES.keys.each do |piece|
+            START_PLACES[piece].each do |pos|
+                row, col = pos
+                row == 0 ? @grid[row][col] = piece.new(:black) : @grid[row][col] = piece.new(:white)
             end
         end
     end
@@ -56,6 +63,6 @@ end
 
 b = Board.new
 b.render
-puts
-b.move_piece([1,2], [2,3])
-b.render
+# puts
+# b.move_piece([1,2], [2,3])
+# b.render
