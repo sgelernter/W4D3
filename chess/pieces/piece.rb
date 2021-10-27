@@ -27,4 +27,15 @@ class Piece
     def inspect
         @symbol.inspect
     end
+
+    def add_arrays(arr1, arr2)
+        sum_arr = arr1.dup
+        arr2.each_with_index {|el,i| sum_arr[i] += el}
+        sum_arr
+    end
+
+    def to_s
+        @symbol.to_s
+    end
+    
 end

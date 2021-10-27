@@ -88,6 +88,16 @@ class Cursor
   end
 
   def update_pos(diff)
-    
+    new_position = add_arrays(@cursor_pos, diff)
+    unless new_position.any? {|coord| coord > 7 || coord < 0}
+      @cursor_pos = new_position
+    end
+    return @cursor_pos
+  end
+
+  def add_arrays(arr1, arr2)
+      sum_arr = arr1.dup
+      arr2.each_with_index {|el,i| sum_arr[i] += el}
+      sum_arr
   end
 end
