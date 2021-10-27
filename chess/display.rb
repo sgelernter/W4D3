@@ -21,17 +21,13 @@ class Display
     end
 
     def render
-        next_move = nil
-        until next_move == :ctrl_c
             system("clear")
             self.get_grid.each {|row| puts row.join}
-            next_move = @cursor.get_input
-        end
     end
 
     def colors(row, col)
         if @cursor.cursor_pos == [row, col]
-            bg = :light_cyan
+            @cursor.selected ? bg = :light_red : bg = :light_cyan
         elsif (row + col).odd? 
             bg = :light_blue
         else
@@ -42,5 +38,7 @@ class Display
  
 end
 
-disp = Display.new(Board.new)
-disp.render
+# disp = Display.new(Board.new)
+# disp.render
+
+# String.color_samples

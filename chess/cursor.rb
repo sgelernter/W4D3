@@ -32,11 +32,12 @@ MOVES = {
 
 class Cursor
 
-  attr_reader :cursor_pos, :board
+  attr_reader :cursor_pos, :board, :selected
 
   def initialize(cursor_pos, board)
     @cursor_pos = cursor_pos
     @board = board
+    @selected = false
   end
 
   def get_input
@@ -75,9 +76,14 @@ class Cursor
     return input
   end
 
+  def toggle_select
+    @selected = !@selected  
+  end
+
   def handle_key(key)
     case key
     when :return, :space
+      toggle_select
       @cursor_pos
     when :left, :right, :up, :down 
       update_pos(MOVES[key]) 
