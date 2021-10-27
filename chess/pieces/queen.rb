@@ -8,7 +8,7 @@ class Queen < Piece
     
     def initialize(color)
         super(color)
-        @symbol = :Q
+        @symbol = "\u2655"
     end
 
     def valid_spaces(current_board, position)

@@ -6,7 +6,7 @@ class Bishop < Piece
     
     def initialize(color)
         super(color)
-        @symbol = :B
+        @symbol = "\u2657"
     end
 
     def valid_spaces(current_board, position)

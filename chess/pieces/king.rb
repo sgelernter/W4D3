@@ -9,7 +9,7 @@ class King < Piece
 
     def initialize(color)
         super(color)
-        @symbol = :K
+        @symbol = "\u2654"
     end
 
     def valid_spaces(current_board, position)

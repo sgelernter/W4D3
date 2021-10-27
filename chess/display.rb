@@ -18,9 +18,16 @@ class Display
             end
         end
         fun_grid
-        fun_grid.each {|row| puts row.join }
     end
 
+    def render
+        next_move = nil
+        until next_move == :ctrl_c
+            system("clear")
+            self.get_grid.each {|row| puts row.join}
+            next_move = @cursor.get_input
+        end
+    end
 
     def colors(row, col)
         if @cursor.cursor_pos == [row, col]
@@ -36,4 +43,4 @@ class Display
 end
 
 disp = Display.new(Board.new)
-disp.get_grid
+disp.render

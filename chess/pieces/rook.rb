@@ -7,7 +7,7 @@ class Rook < Piece
     
     def initialize(color)
         super(color)
-        @symbol = :R
+        @symbol = "\u2656"
     end
 
     def valid_spaces(current_board, position)

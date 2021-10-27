@@ -5,7 +5,7 @@ class Pawn < Piece
 
     def initialize(color)
         super(color)
-        @symbol = :P
+        @symbol = "\u2659"
         @color == :black ? @forward = 1 : @forward = -1
     end
 
