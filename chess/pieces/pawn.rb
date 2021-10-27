@@ -18,10 +18,13 @@ class Pawn < Piece
 
         one_step = [[row + @forward, col]]
         two_steps = [[row + 2*@forward, col]]
+        diagonals = [[row + @forward, col + 1], [row + @forward, col - 1]]
+        diagonals.select! {|pos| current_board[pos].color != self.color && !current_board[pos].instance_of?(NullPiece)}
+
         unless at_start
-            return one_step & spaces
+            return (one_step + diagonals) & spaces
         else
-            return (one_step + two_steps) & spaces
+            return (one_step + two_steps + diagonals) & spaces
         end
     end
 

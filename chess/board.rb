@@ -9,16 +9,18 @@ require_relative "./pieces/knight.rb"
 require_relative "./pieces/queen.rb"
 
 class Board
+
     attr_reader :grid
+
     def initialize 
-        @grid = Array.new(8) {Array.new(8)}
-        (0..7).each do |row| #black at top, white at bottom
-            (0..7).each do |col|
-                if row < 2 || row > 5
+        @grid = Array.new(8) {Array.new(8, NullPiece.instance)}
+        (0..7).each do |col| #black at top, white at bottom
+            @grid[1][col] = Pawn.new(:black)
+            @grid[6][col] = Pawn.new(:white)
+            # (0..7).each do |col|
+                # if row < 2 || row > 5
                     #what's the position ==> ask pieces if any of them start there, if so initialize that piece there
-                    @grid[row][col] = Pawn.new(:black)
-                else
-                    @grid[row][col] = NullPiece.instance
+                    # @grid[row][col] = Pawn.new(:black)
                 end
             end
         end
@@ -54,24 +56,6 @@ end
 
 b = Board.new
 b.render
-# puts
-# b.move_piece([1,3], [2,3])
-# b.render
-# puts
-# b.move_piece([2,3], [2,4])
-# b.render
-# puts
-# b.move_piece([1,4], [3,4])
-# b.render
-# puts
-# b.move_piece([2,3], [3,3])
-# b.render
-# puts
-# b.move_piece([3,3], [5,3])
-# b.render
-
-# p b[[3,3]].valid_moves(b, [3,3])
-# p b.move_piece([0,0], [3,0])
-# p b.move_piece([3,0], [7,7])
-# p b.move_piece([7,7], [8,9])
-# p b.move_piece([4,7], [3,3])
+puts
+b.move_piece([1,2], [2,3])
+b.render
