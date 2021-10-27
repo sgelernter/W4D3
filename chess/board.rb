@@ -2,16 +2,21 @@ require "byebug"
 # require_relative "piece.rb"
 require_relative "./pieces/nullpiece.rb"
 require_relative "./pieces/rook.rb"
+require_relative "./pieces/pawn.rb"
+require_relative "./pieces/bishop.rb"
+require_relative "./pieces/king.rb"
+require_relative "./pieces/knight.rb"
+require_relative "./pieces/queen.rb"
 
 class Board
     attr_reader :grid
     def initialize 
         @grid = Array.new(8) {Array.new(8)}
-        (0..7).each do |row|
+        (0..7).each do |row| #black at top, white at bottom
             (0..7).each do |col|
                 if row < 2 || row > 5
                     #what's the position ==> ask pieces if any of them start there, if so initialize that piece there
-                    @grid[row][col] = Rook.new(:white)
+                    @grid[row][col] = Pawn.new(:black)
                 else
                     @grid[row][col] = NullPiece.instance
                 end
@@ -49,8 +54,21 @@ end
 
 b = Board.new
 b.render
-b.move_piece([1,3], [2,4])
-b.render
+# puts
+# b.move_piece([1,3], [2,3])
+# b.render
+# puts
+# b.move_piece([2,3], [2,4])
+# b.render
+# puts
+# b.move_piece([1,4], [3,4])
+# b.render
+# puts
+# b.move_piece([2,3], [3,3])
+# b.render
+# puts
+# b.move_piece([3,3], [5,3])
+# b.render
 
 # p b[[3,3]].valid_moves(b, [3,3])
 # p b.move_piece([0,0], [3,0])
