@@ -45,6 +45,9 @@ class BestFriend
     @yrs_known = yrs_known
     raise "You don't know me like that bruh" if @yrs_known < 5
     @fav_pastime = fav_pastime
+    if @fav_pastime.length == 0 || @name.length == 0
+      raise "Put in a little effort man"
+    end
   end
 
   def talk_about_friendship
