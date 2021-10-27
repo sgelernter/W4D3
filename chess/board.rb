@@ -1,5 +1,5 @@
 require "byebug"
-# require_relative "piece.rb"
+
 require_relative "./pieces/nullpiece.rb"
 require_relative "./pieces/rook.rb"
 require_relative "./pieces/pawn.rb"
@@ -21,7 +21,7 @@ class Board
 
     def initialize 
         @grid = Array.new(8) {Array.new(8, NullPiece.instance)}
-        (0..7).each do |col| #black at top, white at bottom
+        (0..7).each do |col|
             @grid[1][col] = Pawn.new(:black)
             @grid[6][col] = Pawn.new(:white)
         end
